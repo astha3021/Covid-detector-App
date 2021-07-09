@@ -7,13 +7,14 @@ from streamlit import caching
 import SessionState
 import requests
 from PIL import Image
-hide_streamlit_style = “”"
-
+hide_streamlit_style = """
+<style>
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
+</style>
 
-“”"
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 import sqlite3
 conn = sqlite3.connect('feedback.db')
 c = conn.cursor()
