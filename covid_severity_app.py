@@ -13,7 +13,7 @@ hide_streamlit_style = """
                 footer {visibility: hidden;}
                 </style>
                 """
-        st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 import sqlite3
 conn = sqlite3.connect('feedback.db')
 c = conn.cursor()
