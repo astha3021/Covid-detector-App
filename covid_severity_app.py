@@ -4,7 +4,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pickle
 from streamlit import caching
-import shap
 import SessionState
 import requests
 from PIL import Image
