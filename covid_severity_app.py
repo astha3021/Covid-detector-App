@@ -43,6 +43,13 @@ def predict_severity(prediction_value):
 def main():
     st.set_page_config(page_title="Covid 19 App🈸")
     st.title("Coronavirus Severity Self Assesement✅")
+    hide_streamlit_style = """
+                <style>
+                #MainMenu {visibility: hidden;}
+                footer {visibility: hidden;}
+                </style>
+                """
+    st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
     st.markdown("""
     <style>
     .title{
@@ -69,13 +76,6 @@ def main():
     symptoms_list = ['Breathing Problem','Fever','Dry Cough','Sore Throat','Running Nose','Asthma','Chronic Lung Disease','Headache','Heart Disease','Diabetes','Hyper Tension','Fatigue','Gastrointestinal','Abroad travel','Contact with COVID Patient','Attended Large Gathering','Visited Public Exposed Places','Family working inpublic exposed places']
     
     if option == 'Detect Covid':
-        hide_streamlit_style = """
-                <style>
-                #MainMenu {visibility: hidden;}
-                footer {visibility: hidden;}
-                </style>
-                """
-        st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
         
         st.markdown('<p class= "title">\U0001F637 COVID-19 SEVERITY DETECTION MODEL \U0001F637 </p>',unsafe_allow_html=True)
         st.write("\n")
