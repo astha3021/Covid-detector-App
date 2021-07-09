@@ -43,6 +43,9 @@ def predict_severity(prediction_value):
 def main():
     st.set_page_config(page_title="Covid 19 App🈸")
     st.title("Coronavirus Severity Self Assesement✅")
+    primaryColor="#6eb52f"
+    backgroundColor="#f0f0f5"
+    
     hide_streamlit_style = """
                 <style>
                 #MainMenu {visibility: hidden;}
