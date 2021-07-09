@@ -1,0 +1,19 @@
+  
+numpy>=1.18.5
+scipy>=1.5.0
+scikit-learn==0.23.1
+matplotlib>=3.1.2
+pandas>=1.0.5
+sqlalchemy>=1.4.1
+streamlit
+pymongo==3.11.4
+dnspython
+fake-useragent
+htbuilder==0.3.0
+requests==2.23.0
+requests-aws4auth==1.0.1
+xlrd == 2.0.0
+pypi
+openpyxl
+pmdarima
+plotly==4.14.3
