@@ -12,17 +12,11 @@ import sqlite3
 conn = sqlite3.connect('feedback.db')
 c = conn.cursor()
 def create_table():
-    c.execute('CREATE TABLE IF NOT EXISTS Feedback(review_comments TEXT,improve_comments TEXT,name TEXT,date_Posted DATE)')
-    
-def add_Data(review_comments,improve_comments,name,date_Posted):
-    c.execute('INSERT INTO Feedback(review_comments,improve_comments,name,date_Posted) VALUES(?,?,?,?)  (review_comments,improve_comments,name,date_Posted)')
-    conn.commit()
-    
-def view_Data():
-    c.execute('SELECT * from Feedback')
-    data = c.fetchall()
-    return data
+    c.execute('CREATE TABLE IF NOT EXISTS feedback(date_submitted DATE, Q1 TEXT, Q2 INTEGER, Q3 INTEGER, Q4 TEXT)')
 
+def add_feedback(date_submitted, Q1, Q2, Q3, Q4):
+    c.execute('INSERT INTO feedback (date_submitted,Q1, Q2, Q3, Q4) VALUES (?,?,?,?,?)',(date_submitted,Q1, Q2, Q3, Q4))
+    conn.commit()
 session = SessionState.get(run_id=0)
 
 model = pickle.load(open("rf_model.pkl","rb"))
@@ -155,10 +149,25 @@ def main():
         
     if option == 'Give Feedback':
         st.title('Feedback Form')
-        st.markdown('<p class= "title">Please Provide Yoour Valuable Feedback 🔆</p>',unsafe_allow_html=True)
- 
-       
+        st.markdown('<p class= "title">Please Provide Your Valuable Feedback 🔆</p>',unsafe_allow_html=True)
+        d = st.date_input("Today's date",None, None, None, None)
+        question_1 = st.text_input('What is your name?')
+        st.write('You selected:', question_1)
+    
+        question_2 = st.slider('What is your age?', 10,85)
+        st.write('You selected:', question_2) 
 
+        question_3 = st.slider('Overall, how happy are you with the app? (5 being very happy and 1 being very dissapointed)',                                     1,5,1)
+        st.write('You selected:', question_3)
+        
+        question_4 = st.text_input('What could have been better?', max_chars=50)
+
+    if st.button("Submit feedback"):
+        create_table()
+        add_feedback(d, question_1, question_2, question_3, question_4)
+        st.success("Feedback submitted")
+       
+        
  
     
 if __name__=='__main__':
